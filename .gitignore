@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/Pixvault_video.mp4
+public/backgrounde.mp4
+public/Pixvault_video.mp4
+public/backgrounde.mp4
