@@ -229,23 +229,10 @@ export default function Home_() {
               <LiveClock />
             </div>
             <div className="flex items-center gap-0.5 px-1 py-1 rounded-full bg-white/70 dark:bg-black/70 backdrop-blur-sm border border-gray-200/40 dark:border-neutral-800/40 shadow-sm">
-              <button
-                onClick={triggerFlip}
-                className="p-1.5 rounded-full text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all hover:bg-gray-100/80 dark:hover:bg-neutral-800/80"
-              >
-                <Image
-                  className="rounded-[4px] transition-transform duration-300"
-                  style={{ transform: rotated ? "rotate(45deg)" : "rotate(0deg)" }}
-                  src="/creeper.jpg"
-                  width={16}
-                  height={16}
-                  alt={muted ? "Unmute" : "Mute"}
-                />
-              </button>
               <span className="w-px h-4 bg-gray-200/50 dark:bg-neutral-700/50" />
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
-                className="p-1.5 rounded-full text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all hover:bg-gray-100/80 dark:hover:bg-neutral-800/80"
+                className="p-1.5 cursor-pointer rounded-full text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all hover:bg-gray-100/80 dark:hover:bg-neutral-800/80"
               >
                 {isDark ? (
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
