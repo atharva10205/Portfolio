@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+.animate-loading {
+  animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes wordFade {
+  0%   { opacity: 0; transform: translateY(6px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@utility animate-wordFade {
+  animation: wordFade 0.3s ease;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,5 +39,50 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.022em;
 }
+
+.tile-flip { perspective: 800px; position: relative;  overflow: hidden;  } 
+.tile-back {
+  position: absolute; inset: 0;
+background-image: url('/sc1.png');
+  background-size: var(--bg-w) var(--bg-h);
+  background-position: var(--bg-x) var(--bg-y);
+  transform-origin: top;
+  animation-name: tileFlip;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-delay: inherit;
+}
+
+@keyframes tileFlip {
+  0%   { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes contentFadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+body.pickaxe-cursor,
+body.pickaxe-cursor a,
+body.pickaxe-cursor button,
+body.pickaxe-cursor * {
+  cursor: pointer !important;
+}
+body.pickaxe-cursor * {
+  cursor: url('/icons8-minecraft-pickaxe-48.png') 24 24, auto !important;
+}
+
+body.pickaxe-cursor-swing,
+body.pickaxe-cursor-swing a,
+body.pickaxe-cursor-swing button,
+body.pickaxe-cursor-swing * {
+  cursor: url('/Tilted_pick.png') 24 24, auto !important;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
