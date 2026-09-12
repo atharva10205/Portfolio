@@ -200,7 +200,7 @@ export default function Home_() {
   }, []);
 
   const regularProjects = [
-    { title: "Property Marketplace", desc: "HomiFi is a rental property app built with Next.js, Prisma, and Neon, using NextAuth,Upstash Redis to cache .", tag: "Homify", img: "Homify_img_1.png", video: "/Homify_Video.mp4" },
+    { title: "Property Marketplace", desc: "HomiFi is a rental property app built with Next.js, Prisma, and Neon DB, using NextAuth,Upstash Redis to cache .", tag: "Homify", img: "Homify_img_1.png", video: "/Homify_Video.mp4" },
     { title: "Image sharing Platform", desc: "PixVault is a Pinterest-inspired image sharing platform where users can upload, organize, discover, and save high-quality images .", tag: "PixVault", img: "PixVault.png", video: "/Pixvault_video.mp4" },
     { title: "Fastify Backend Optimized", desc: "Benchmark pitting a Fastify server against a hand-tuned raw Node http server to isolate framework overhead.", tag: "Fastify", icon: true, link: "https://github.com/atharva10205/Fastify-Backend-Optimized" },
     { title: "Anchor AMM", desc: "Automated market maker built on Solana with the Anchor framework, handling swaps, liquidity pools, and pricing on-chain.", tag: "AMM", icon: true, link: "https://github.com/atharva10205/Anchor-AMM" },
