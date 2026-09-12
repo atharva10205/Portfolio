@@ -41,5 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # large media
-public/Pixvault_video.mp4
 public/backgrounde.mp4
