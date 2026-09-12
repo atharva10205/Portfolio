@@ -150,7 +150,6 @@ export default function Home_() {
     };
   }, [flipping]);
 
-  // Track viewport size safely (avoids reading window during render / SSR)
   useEffect(() => {
     const updateSize = () =>
       setViewportSize({ w: window.innerWidth, h: window.innerHeight });
@@ -237,29 +236,7 @@ export default function Home_() {
         </div>
       )}
 
-      {introComplete && (
-        <div className="flex sm:hidden fixed bottom-4 left-1/2 -translate-x-1/2 rounded-2xl p-1 h-fit w-fit gap-4 border border-gray-300 dark:border-neutral-700 bg-white/90 dark:bg-black/80 backdrop-blur-sm z-50">
-          <div
-            className="absolute h-[calc(100%-8px)] aspect-square rounded-xl bg-[#FF6600] transition-transform duration-200 ease-in-out top-1"
-            style={{
-              transform: `translateX(calc(${activeSection === "home" ? 0 : activeSection === "projects" ? 1 : 2
-                } * (100% + 16px)))`,
-            }}
-          />
 
-          <div onClick={() => scrollTo(homeRef)} className="relative z-10 p-2 cursor-pointer">
-            <Home size={22} className={`transition-colors duration-300 ${activeSection === "home" ? "text-white" : "text-gray-800 dark:text-neutral-300"}`} />
-          </div>
-
-          <div onClick={() => scrollTo(projectsRef)} className="relative z-10 p-2 cursor-pointer">
-            <FolderKanban size={22} className={`transition-colors duration-300 ${activeSection === "projects" ? "text-white" : "text-gray-800 dark:text-neutral-300"}`} />
-          </div>
-
-          <div onClick={() => scrollTo(aboutRef)} className="relative z-10 p-2 cursor-pointer">
-            <User size={22} className={`transition-colors duration-300 ${activeSection === "about" ? "text-white" : "text-gray-800 dark:text-neutral-300"}`} />
-          </div>
-        </div>
-      )}
 
       <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
         <main
@@ -450,29 +427,24 @@ export default function Home_() {
 
         <section
           ref={projectsRef}
-          className="snap-start min-h-screen bg-white dark:bg-neutral-950 flex flex-col items-center pt-16 sm:pt-20 px-5 sm:px-10 pb-16 sm:pb-12 overflow-hidden"
+          className="snap-start min-h-screen bg-white dark:bg-neutral-950 flex flex-col items-center justify-center pt-8 sm:pt-20 px-4 sm:px-10 pb-6 sm:pb-12 overflow-y-auto"
         >
-          <a href="" className="text-[28px] sm:text-[45px] font-semibold tracking-tight text-[#FF6600] leading-none mb-8 sm:mb-10">
+          <a href="" className="text-[22px] sm:text-[45px] font-semibold tracking-tight text-[#FF6600] leading-none mb-4 sm:mb-10">
             Projects
           </a>
 
-          <div className="w-full max-w-5xl flex flex-col gap-5 sm:gap-10">
+          <div className="w-full max-w-5xl flex flex-col gap-4 sm:gap-10">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.12em] text-gray-400 dark:text-neutral-500 uppercase mb-3">
+              <p className="text-[10px] sm:text-[11px] font-semibold tracking-[0.12em] text-gray-400 dark:text-neutral-500 uppercase mb-2 sm:mb-3">
                 Major Project
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-5 sm:gap-7 items-start sm:items-center group cursor-pointer">
-                <div className="w-full sm:w-[420px] aspect-video rounded-2xl overflow-hidden flex-shrink-0">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-7 items-start sm:items-center group cursor-pointer">
+                <div className="w-full h-[140px] sm:h-auto sm:w-[420px] sm:aspect-video rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0">
                   <video
-                    ref={(el) => {
-                      videoRefs.current[0] = el;
-                    }}
+                    ref={(el) => { videoRefs.current[0] = el; }}
                     src="/Clickora_Video/Overall_Clickora.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                    autoPlay muted loop playsInline
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -523,7 +495,7 @@ export default function Home_() {
                     }}
                     className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center group cursor-pointer"
                   >
-                    <div className="w-full h-20 sm:w-[200px] sm:h-32 rounded-xl overflow-hidden flex-shrink-0">
+                    <div className="w-full h-16 sm:w-[200px] sm:h-32 rounded-xl overflow-hidden flex-shrink-0">
                       {p.icon ? (
                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#FF6600]/15 to-[#FF6600]/5 dark:from-[#FF6600]/20 dark:to-neutral-900 transition-transform duration-500 group-hover:scale-105">
                           <Code2 strokeWidth={1.75} className="w-6 h-6 sm:w-9 sm:h-9 text-[#FF6600]" />
@@ -531,10 +503,7 @@ export default function Home_() {
                       ) : p.video ? (
                         <video
                           src={p.video}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
+                          autoPlay muted loop playsInline
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
@@ -585,14 +554,14 @@ export default function Home_() {
             </div>
 
             <div className="flex flex-col gap-5 text-center md:text-left">
-                         <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed max-w-md text-left">
+              <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed max-w-md text-left">
                 I&apos;m a final-year IIoT engineering student who builds full-stack
                 and web3 products end to end — from smart contracts on Solana to
                 the frontend that ships them. I like taking projects from idea to
                 a live, working product rather than just a prototype.
               </p>
 
-             <div className="flex flex-nowrap gap-1.5 sm:gap-3 justify-center md:justify-start overflow-x-auto">
+              <div className="flex flex-nowrap gap-1.5 sm:gap-3 justify-center md:justify-start overflow-x-auto">
                 <div className="flex items-center shrink-0 gap-1.5 text-[9px] sm:text-sm font-semibold text-gray-700 dark:text-neutral-300 border border-gray-300 dark:border-neutral-700 rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 whitespace-nowrap">
                   Final-year IIoT student
                 </div>
@@ -604,7 +573,7 @@ export default function Home_() {
                 </div>
               </div>
 
-             <div className="grid grid-cols-2 sm:flex sm:flex-row flex-wrap gap-3 justify-center md:justify-start mt-2 w-full sm:w-auto">
+              <div className="grid grid-cols-2 sm:flex sm:flex-row flex-wrap gap-3 justify-center md:justify-start mt-2 w-full sm:w-auto">
                 <a
                   href="https://cal.com/atharva-pandhare-6fau9d/15min"
                   target="_blank"
